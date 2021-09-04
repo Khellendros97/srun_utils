@@ -3,7 +3,7 @@ package config
 import (
 	"fmt"
 	"os"
-	utils "github.com/srunsoft/srun_utils"
+	utils "github.com/Khellendros97/srun_utils"
 	"strconv"
 	"strings"
 
