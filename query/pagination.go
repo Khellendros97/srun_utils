@@ -1,8 +1,8 @@
 package query
 
 type Pagination struct {
-	PageNum int `form:"page" json:"pageNum"`
-	PageSize int `form:"size" json:"pageSize"`
+	PageNum int `form:"pageNum" json:"pageNum"`
+	PageSize int `form:"pageSize" json:"pageSize"`
 }
 
 func (p *Pagination) Limit() int {
