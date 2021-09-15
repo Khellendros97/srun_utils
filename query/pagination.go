@@ -1,7 +1,7 @@
 package query
 
 type Pagination struct {
-	PageNum int `form:"pageNum" json:"pageNum"`
+	PageNum  int `form:"page" json:"page"`
 	PageSize int `form:"pageSize" json:"pageSize"`
 }
 
