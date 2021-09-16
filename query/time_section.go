@@ -2,7 +2,6 @@ package query
 
 import (
 	"github.com/sirupsen/logrus"
-	"strconv"
 	"time"
 
 	"github.com/jinzhu/gorm"
@@ -10,8 +9,8 @@ import (
 
 //TimeSection 时间区间， 时间格式为YYYY-MM-DD hh:mm:ss
 type TimeSection struct {
-	StartTime string `form:"start_time" json:"start_time"` //开始时间
-	StopTime  string `form:"stop_time" json:"stop_time"`  //结束时间
+	StartTime string `form:"startDate" json:"startDate"` //开始时间
+	StopTime  string `form:"endDate" json:"endDate"`  //结束时间
 }
 
 // StartTimeStamp @title StartTimeStamp
@@ -48,15 +47,12 @@ func (t *TimeSection) StopTimeStamp() (int64, error) {
 func (t *TimeSection) SetTimeSectionForQuery(db *gorm.DB, column string) *gorm.DB {
 	start, errStart := t.StartTimeStamp()
 	stop, errStop := t.StopTimeStamp()
-	itoa := func(n int64) string {
-		return strconv.Itoa(int(n))
-	}
 
 	if errStart == nil {
-		db = db.Where(column+" >= ?", itoa(start))
+		db = db.Where(column+" >= ?", start)
 	}
 	if errStop == nil {
-		db = db.Where(column+" <= ?", itoa(stop))
+		db = db.Where(column+" <= ?", stop)
 	}
 	return db
 }
