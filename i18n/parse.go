@@ -68,7 +68,7 @@ func (lex *Lexer) GetToken() (t token) {
 		}
 
 		if status == LEXER_STATUS_NORMAL {
-			if cur == '$' {
+			if cur == '$' || cur == '~' {
 				break
 			}
 		}
